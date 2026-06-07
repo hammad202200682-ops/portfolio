@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hammad Ashraf — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #f8f5f0;
+    --accent: #c8963e;
+    --accent2: #2d6a4f;
+    --muted: #6b6b7b;
+    --border: #e0dbd2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(248,245,240,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    animation: fadeDown 0.6s ease both;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--ink); letter-spacing: -0.5px;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted);
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 48px 60px;
+    gap: 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,150,62,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-text { animation: fadeUp 0.8s ease 0.2s both; }
+  .hero-tag {
+    display: inline-block;
+    background: var(--accent2); color: white;
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 2px; margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 900; line-height: 1.05;
+    letter-spacing: -2px; margin-bottom: 20px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--muted);
+    line-height: 1.7; max-width: 440px; margin-bottom: 36px;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--ink); color: white;
+    padding: 13px 28px; border-radius: 3px;
+    text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid var(--ink); color: var(--ink);
+    padding: 13px 28px; border-radius: 3px;
+    text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    transition: transform 0.2s, background 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { background: var(--ink); color: white; transform: translateY(-2px); }
+
+  .hero-visual {
+    animation: fadeUp 0.8s ease 0.4s both;
+    display: flex; justify-content: center; align-items: center;
+  }
+  .profile-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 40px 36px;
+    width: 100%; max-width: 360px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    position: relative;
+  }
+  .profile-card::after {
+    content: '';
+    position: absolute; bottom: -8px; right: -8px;
+    width: 100%; height: 100%;
+    border: 1.5px solid var(--accent);
+    border-radius: 8px; z-index: -1;
+  }
+  .profile-initials {
+    width: 80px; height: 80px;
+    background: var(--ink);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 700;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .profile-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; margin-bottom: 4px;
+  }
+  .profile-card p { color: var(--muted); font-size: 0.85rem; margin-bottom: 20px; }
+  .profile-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; border-top: 1px solid var(--border); padding-top: 20px;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 700; color: var(--accent);
+  }
+  .stat-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  section { padding: 90px 48px; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700; letter-spacing: -1px;
+    margin-bottom: 48px;
+    border-bottom: 2px solid var(--border); padding-bottom: 20px;
+  }
+
+  #about { background: white; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .about-text { font-size: 1rem; line-height: 1.85; color: #444; }
+  .about-text p { margin-bottom: 16px; }
+  .info-list { list-style: none; }
+  .info-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  .info-list li:last-child { border-bottom: none; }
+  .info-key { font-weight: 500; min-width: 110px; color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+  #skills { background: var(--paper); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .skill-card {
+    background: white; border: 1px solid var(--border);
+    border-radius: 6px; padding: 28px 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+  .skill-card-icon { font-size: 1.8rem; margin-bottom: 14px; }
+  .skill-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 12px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    background: var(--paper); border: 1px solid var(--border);
+    font-size: 0.75rem; padding: 4px 10px; border-radius: 20px;
+    color: var(--ink);
+  }
+
+  .lang-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+  .lang-card {
+    background: white; border: 1px solid var(--border);
+    border-radius: 6px; padding: 20px;
+    text-align: center;
+  }
+  .lang-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .lang-level {
+    font-size: 0.75rem; color: white; background: var(--accent2);
+    padding: 3px 10px; border-radius: 20px; display: inline-block;
+  }
+
+  #projects { background: white; }
+  .project-card {
+    border: 1px solid var(--border); border-radius: 8px;
+    overflow: hidden; max-width: 800px;
+  }
+  .project-header {
+    background: var(--ink); color: white;
+    padding: 28px 32px;
+  }
+  .project-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; margin-bottom: 8px;
+  }
+  .project-header p { font-size: 0.85rem; opacity: 0.7; }
+  .project-body { padding: 28px 32px; }
+  .project-item { margin-bottom: 20px; }
+  .project-item h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 6px; }
+  .project-item p { font-size: 0.9rem; line-height: 1.7; color: #555; }
+
+  #education { background: var(--paper); }
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 6px; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .timeline-item { position: relative; margin-bottom: 36px; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -32px; top: 6px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--paper);
+  }
+  .timeline-year {
+    font-size: 0.75rem; color: var(--accent); font-weight: 500;
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;
+  }
+  .timeline-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
+  .timeline-sub { font-size: 0.85rem; color: var(--muted); margin-top: 2px; }
+
+  #certificates { background: white; }
+  .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .cert-card {
+    border: 1px solid var(--border); border-radius: 6px;
+    padding: 24px; display: flex; gap: 16px; align-items: flex-start;
+    transition: box-shadow 0.2s;
+  }
+  .cert-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+  .cert-icon {
+    width: 44px; height: 44px; border-radius: 8px;
+    background: var(--ink); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .cert-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
+  .cert-issuer { font-size: 0.8rem; color: var(--muted); margin-bottom: 8px; }
+  .cert-desc { font-size: 0.82rem; color: #555; line-height: 1.6; }
+
+  #contact { background: var(--ink); color: white; text-align: center; }
+  #contact .section-label { color: var(--accent); }
+  #contact .section-title { color: white; border-color: rgba(255,255,255,0.1); }
+  .contact-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 16px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 0.9rem; padding: 12px 20px;
+    border: 1px solid rgba(255,255,255,0.15); border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.08); color: white; border-color: var(--accent); }
+
+  .conf-card {
+    background: var(--paper); border-left: 3px solid var(--accent);
+    padding: 20px 24px; border-radius: 0 6px 6px 0; margin-top: 32px;
+  }
+  .conf-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 6px; }
+  .conf-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 90px 20px 40px; }
+    .hero-visual { display: none; }
+    section { padding: 60px 20px; }
+    .about-grid, .skills-grid, .cert-grid, .lang-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Hammad Ashraf</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Research</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <span class="hero-tag">Applied Linguistics Graduate</span>
+    <h1>Hammad<br><span>Ashraf</span></h1>
+    <p class="hero-sub">BS Applied Linguistics graduate from GCUF, Faisalabad. Passionate about language research, translation studies, and the intersection of linguistics and technology.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View Research</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="profile-card">
+      <div class="profile-initials">HA</div>
+      <h3>Hammad Ashraf</h3>
+      <p>Faisalabad, Pakistan</p>
+      <div class="profile-stats">
+        <div class="stat"><div class="stat-num">4</div><div class="stat-label">Years Study</div></div>
+        <div class="stat"><div class="stat-num">1</div><div class="stat-label">Conference</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">Certificates</div></div>
+        <div class="stat"><div class="stat-num">3</div><div class="stat-label">Languages</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="fade-in">
+    <div class="section-label">Who I Am</div>
+    <div class="section-title">About Me</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I have recently completed my Bachelor of Science in Applied Linguistics at Government College University Faisalabad (GCUF). I have a strong academic background in linguistics, translation studies, corpus analysis, and language research.</p>
+        <p>Alongside my studies, I have been developing technical skills in Python programming and Microsoft Office to stay competitive in today's professional landscape.</p>
+        <p>I successfully managed my family's business while completing my full-time degree — an experience that shaped my communication, time management, and leadership skills. I am eager to apply my linguistic knowledge in a professional environment.</p>
+      </div>
+      <ul class="info-list">
+        <li><span class="info-key">University</span> Government College University Faisalabad</li>
+        <li><span class="info-key">Degree</span> BS Applied Linguistics (2022–2026)</li>
+        <li><span class="info-key">Location</span> Faisalabad, Pakistan</li>
+        <li><span class="info-key">Email</span> hammadashraf1452@gmail.com</li>
+        <li><span class="info-key">Languages</span> Urdu, English, Punjabi</li>
+        <li><span class="info-key">Interests</span> Translation, Corpus Analysis, AI & Language</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="fade-in">
+    <div class="section-label">What I Do</div>
+    <div class="section-title">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-icon">🔬</div>
+        <h4>Linguistics</h4>
+        <div class="skill-tags">
+          <span class="tag">Discourse Analysis</span>
+          <span class="tag">Translation Studies</span>
+          <span class="tag">Corpus Analysis</span>
+          <span class="tag">Research Methodology</span>
+          <span class="tag">Academic Writing</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">💻</div>
+        <h4>Technical</h4>
+        <div class="skill-tags">
+          <span class="tag">Microsoft Office</span>
+          <span class="tag">Microsoft Excel</span>
+          <span class="tag">Python (Basic)</span>
+          <span class="tag">Google Workspace</span>
+          <span class="tag">Generative AI</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">🤝</div>
+        <h4>Soft Skills</h4>
+        <div class="skill-tags">
+          <span class="tag">Communication</span>
+          <span class="tag">Time Management</span>
+          <span class="tag">Team Collaboration</span>
+          <span class="tag">Problem Solving</span>
+          <span class="tag">Leadership</span>
+        </div>
+      </div>
+    </div>
+    <div class="section-label" style="margin-top:48px;">Languages</div>
+    <div class="lang-grid">
+      <div class="lang-card"><div class="lang-name">Urdu</div><span class="lang-level">Native</span></div>
+      <div class="lang-card"><div class="lang-name">Punjabi</div><span class="lang-level">Native</span></div>
+      <div class="lang-card"><div class="lang-name">English</div><span class="lang-level" style="background:var(--accent)">B2 — Independent</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="fade-in">
+    <div class="section-label">Academic Work</div>
+    <div class="section-title">Research Project</div>
+    <div class="project-card">
+      <div class="project-header">
+        <h3>Evaluating Explicitation and Implicitation in Translation Studies</h3>
+        <p>BS Applied Linguistics — Government College University Faisalabad</p>
+      </div>
+      <div class="project-body">
+        <div class="project-item">
+          <h4>Theoretical Framework</h4>
+          <p>Applied cognitive linguistic theories of Explicitation and Implicitation to analyze cross-linguistic rendering across divergent language pairs.</p>
+        </div>
+        <div class="project-item">
+          <h4>Methodology</h4>
+          <p>Conducted comparative corpus analysis to observe how shifting syntactic structures alter text pragmatics and textual cohesive ties.</p>
+        </div>
+        <div class="project-item">
+          <h4>Academic Focus</h4>
+          <p>Evaluated translation shifts and critical theoretical summaries challenging rigid binary translation models.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="fade-in">
+    <div class="section-label">Academic Background</div>
+    <div class="section-title">Education</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2022 — 2026</div>
+        <div class="timeline-title">BS Applied Linguistics</div>
+        <div class="timeline-sub">Government College University Faisalabad (GCUF) · Arts & Humanities</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2019 — 2021</div>
+        <div class="timeline-title">FSc Pre-Medical</div>
+        <div class="timeline-sub">Wisdom Public Higher Secondary School · Chak Jhumra, Faisalabad</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2017 — 2019</div>
+        <div class="timeline-title">Matriculation — Science Group</div>
+        <div class="timeline-sub">Wisdom Public High School · Chak Jhumra, Faisalabad</div>
+      </div>
+    </div>
+    <div class="conf-card">
+      <h4>🎤 9th International Conference — ICLAP 2023</h4>
+      <p>Participated as a Delegate at Government College University Faisalabad. Attended sessions on <em>"Navigating the Nexus of Language, Linguistics, Literature and Technology in the 21st Century."</em> · December 2023</p>
+    </div>
+  </div>
+</section>
+
+<section id="certificates">
+  <div class="fade-in">
+    <div class="section-label">Professional Development</div>
+    <div class="section-title">Certificates</div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon">☁️</div>
+        <div>
+          <div class="cert-title">Introduction to Generative AI</div>
+          <div class="cert-issuer">Google Cloud Skills Boost · May 2026</div>
+          <div class="cert-desc">Developed foundational understanding of generative AI models, large-scale foundation models, and core prompt engineering concepts.</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">⏱️</div>
+        <div>
+          <div class="cert-title">Introduction to Time Management</div>
+          <div class="cert-issuer">Alison · March 2026</div>
+          <div class="cert-desc">Completed professional time management strategies including task prioritization, productivity optimization, and effective planning techniques.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="fade-in">
+    <div class="section-label">Let's Connect</div>
+    <div class="section-title">Contact</div>
+    <p style="color:rgba(255,255,255,0.6); margin-bottom:32px;">Open to opportunities in linguistics, research, translation, and communication roles.</p>
+    <div class="contact-links">
+      <a href="mailto:hammadashraf1452@gmail.com" class="contact-link">📧 hammadashraf1452@gmail.com</a>
+      <a href="https://www.linkedin.com/in/hammad-ashraf-58527832a" target="_blank" class="contact-link">💼 LinkedIn</a>
+      <a href="https://wa.me/923067774421" target="_blank" class="contact-link">💬 WhatsApp</a>
+      <span class="contact-link">📍 Faisalabad, Pakistan</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
